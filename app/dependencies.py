@@ -1,4 +1,4 @@
-from .auth import get_oauth_token
+from .oauth import get_oauth_token
 
 from fastapi import Depends, HTTPException, Security
 from fastapi.security import OAuth2PasswordBearer
