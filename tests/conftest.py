@@ -1,4 +1,4 @@
-import pytest
+import pytest_asyncio as pytest
 from httpx import AsyncClient
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.main import app
