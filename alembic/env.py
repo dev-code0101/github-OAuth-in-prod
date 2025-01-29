@@ -44,28 +44,28 @@ target_metadata = None
 # ... etc.
 
 
-# def run_migrations_offline() -> None:
-#     """Run migrations in 'offline' mode.
+def run_migrations_offline() -> None:
+    """Run migrations in 'offline' mode.
 
-#     This configures the context with just a URL
-#     and not an Engine, though an Engine is acceptable
-#     here as well.  By skipping the Engine creation
-#     we don't even need a DBAPI to be available.
+    This configures the context with just a URL
+    and not an Engine, though an Engine is acceptable
+    here as well.  By skipping the Engine creation
+    we don't even need a DBAPI to be available.
 
-#     Calls to context.execute() here emit the given string to the
-#     script output.
+    Calls to context.execute() here emit the given string to the
+    script output.
 
-#     """
-#     url = config.get_main_option("sqlalchemy.url")
-#     context.configure(
-#         url=url,
-#         target_metadata=target_metadata,
-#         literal_binds=True,
-#         dialect_opts={"paramstyle": "named"},
-#     )
+    """
+    url = config.get_main_option("sqlalchemy.url")
+    context.configure(
+        url=url,
+        target_metadata=target_metadata,
+        literal_binds=True,
+        dialect_opts={"paramstyle": "named"},
+    )
 
-#     with context.begin_transaction():
-#         context.run_migrations()
+    with context.begin_transaction():
+        context.run_migrations()
 
 
 def run_migrations_online() -> None:
@@ -90,16 +90,16 @@ def run_migrations_online() -> None:
             context.run_migrations()
 
 
-# running migrations asynchronously
-def run_migrations_online():
-    connectable = engine.connect()
+# # running migrations asynchronously
+# def run_migrations_online():
+#     connectable = engine.connect()
 
-    # Ensure Alembic uses the async engine for migrations
-    with connectable:
-        context.configure(connection=connectable, target_metadata=Base.metadata)
+#     # Ensure Alembic uses the async engine for migrations
+#     with connectable:
+#         context.configure(connection=connectable, target_metadata=Base.metadata)
 
-        with context.begin_transaction():
-            context.run_migrations()
+#         with context.begin_transaction():
+#             context.run_migrations()
 
 
 if context.is_offline_mode():
