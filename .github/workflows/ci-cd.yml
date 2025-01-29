@@ -51,7 +51,7 @@ jobs:
         env:
           DATABASE_URL: postgresql+asyncpg://testuser:testpassword@localhost/testdb
         run: |
-          pytest --cov=app tests/
+          pytest tests/
 
   deploy:
     needs: test
