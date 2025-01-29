@@ -74,4 +74,35 @@ server {
     location / {
         proxy_pass http://127.0.0.1:8000;
         proxy_set_header Host \$host;
+        proxy_set_header X-Real-IP \$remote_addr;
+        proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto \$scheme;
+        proxy_cache_bypass \$http_upgrade;
+    }
+
+    error_log /var/log/nginx/fastapi_error.log;
+    access_log /var/log/nginx/fastapi_access.log;
+}
+EOL
+
+# Enable the Nginx site configuration and test the Nginx setup
+sudo ln -s /etc/nginx/sites-available/fastapi /etc/nginx/sites-enabled/
+sudo nginx -t
+
+# Restart Nginx to apply changes
+sudo systemctl restart nginx
+
+# Open necessary firewall ports (if applicable)
+echo "🔒 Configuring firewall..."
+sudo ufw allow 'Nginx Full'
+sudo ufw allow OpenSSH
+sudo ufw enable
+
+# Final message
+echo "✅ FastAPI application setup is complete!"
+echo "🌐 You can now access your app at http://yourdomain.com"
+
        
+
+alembic init alembic
+alembic revision --autogenerate -m "Initial migration"

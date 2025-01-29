@@ -66,4 +66,5 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /home/${{ secrets.SERVER_USER }}/fastapi-app
+            alembic revision --autogenerate -m "Initial migration"
             ./deploy.sh
