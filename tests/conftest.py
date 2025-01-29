@@ -2,7 +2,7 @@ import pytest
 from httpx import AsyncClient
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.main import app
-from app.db import get_session, Base, engine
+from app.db import get_db, Base, engine
 
 
 # Override the database session to use an in-memory test database
@@ -10,7 +10,7 @@ from app.db import get_session, Base, engine
 async def db_session():
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
-    session = get_session()
+    session = get_db()
     yield session
     await session.close()
 
