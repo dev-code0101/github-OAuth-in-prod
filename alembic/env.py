@@ -12,10 +12,10 @@ from sqlalchemy.orm import sessionmaker
 from app.models import Base
 
 # Pull in your DATABASE_URL from environment or alembic.ini
-from config import DATABASE_URL  # or your preferred method to fetch DB URL
+from app.config import settings  # or your preferred method to fetch DB URL
 
 # Set up your async database engine
-engine = create_async_engine(DATABASE_URL, echo=True)
+engine = create_async_engine(settings.DATABASE_URL, echo=True)
 
 # Create a session maker
 SessionLocal = sessionmaker(
