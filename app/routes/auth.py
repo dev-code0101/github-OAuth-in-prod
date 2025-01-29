@@ -10,7 +10,7 @@ router = APIRouter()
 
 @router.get("/login")
 async def login():
-    authorization_url = f"https://github.com/login/oauth/authorize?client_id={settings.GITHUB_CLIENT_ID}"
+    authorization_url = f"https://github.com/login/oauth/authorize?client_id={settings.CLIENT_ID}"
     return {"authorization_url": authorization_url}
 
 

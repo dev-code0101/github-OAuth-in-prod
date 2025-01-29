@@ -4,7 +4,7 @@ from app.models import User, OAuthToken
 from app.config import settings
 from oauthlib.oauth2 import WebApplicationClient
 
-client = WebApplicationClient(settings.GITHUB_CLIENT_ID)
+client = WebApplicationClient(settings.CLIENT_ID)
 TOKEN_URL = "https://github.com/login/oauth/access_token"
 USER_API_URL = "https://api.github.com/user"
 
@@ -14,7 +14,7 @@ async def get_oauth_token(db: AsyncSession, code: str):
         response = await client.post(
             TOKEN_URL,
             data={
-                "client_id": settings.GITHUB_CLIENT_ID,
+                "client_id": settings.CLIENT_ID,
                 "client_secret": settings.GITHUB_CLIENT_SECRET,
                 "code": code,
             },
