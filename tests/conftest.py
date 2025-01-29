@@ -2,7 +2,8 @@ import pytest
 from httpx import AsyncClient
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.main import app
-from app.db import get_db, Base, engine
+from app.db import get_db, engine
+from app.models import Base
 
 
 # Override the database session to use an in-memory test database
