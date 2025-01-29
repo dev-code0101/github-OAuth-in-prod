@@ -19,5 +19,5 @@ async def db_session():
 # Override the database dependency for tests
 @pytest.fixture(scope="function")
 async def client():
-    async with AsyncClient(app=app, base_url="http://testserver") as ac:
+    async with AsyncClient(base_url="http://testserver") as ac:
         yield ac
