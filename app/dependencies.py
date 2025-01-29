@@ -3,7 +3,7 @@ from .oauth import get_oauth_token
 from fastapi import Depends, HTTPException, Security
 from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.ext.asyncio import AsyncSession
-from app.db import get_session
+from app.db import get_db as get_session
 from app.models import TokenData
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
